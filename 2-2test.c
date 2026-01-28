@@ -16,7 +16,7 @@
 로또번호 입력 : 44 (Enter)
 입력된 로또번호 : 7 9 15 20 33 44"
 /**/
-/*
+
 #include<stdio.h>
 
 int main(void)
@@ -27,14 +27,22 @@ int main(void)
 	{
 		printf("로또번호 입력 : ");
 		scanf("%d", &lotto[i]);
-		for (int j = 0; j < i; j++) 
+		if ((lotto[i] > 0) && (lotto[i] < 46))	// 1~45일때 카운트
 		{
-			if (lotto[j] == lotto[i])
-			{
-				printf("중복 발견 ! :\n");
-				i--;
-				break;
+			for (int j = 0; j < i; j++)			// i에 입력된 값과
+			{									// 현재 i에 입력된 전의 값들을 비교		
+				if (lotto[j] == lotto[i])		
+				{
+					printf("중복 발견 ! :\n");
+					i--;						// 중복 발생시 카운트 x
+					break;
+				}
 			}
+		}
+		else
+		{
+			printf("잘못된 입력입니다.\n");
+			i--;
 		}
 		
 		
@@ -47,4 +55,3 @@ int main(void)
 	}
 	return 0;
 }
-*/
