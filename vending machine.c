@@ -28,10 +28,10 @@ int main(void)
 	
     int c = 0;
     int pay = 0;
-    int d = 0;
+    
 
-	char* names[] = { "포카리스웨트", "콜라", "사이다", "커피", "빼빼로" };
-	int prices[] = { 1000, 1200, 1000, 800, 1500 };
+	char* names[] = { "콜라", "사이다", "빼빼로", "포카리", "쌍쌍바" };
+	int prices[] = { 2500, 1500, 2000, 1300, 1000 };
     
 	printf("================자판기================\n");
     int i = 0;
@@ -57,12 +57,38 @@ int main(void)
     
     scanf("%d", &pay);
     
-    d = pay - prices[pick - 1];                             // 거스름 돈 계산
     
-    if (d != 0)
+    int d = 0;
+    int pay1 = 0;
+    //4500 = 1500 6000
+    d = pay - prices[pick - 1];                             // 거스름 돈 계산
+    // 금액 부족할 때 누적 계산
+    if (pay > prices[pick -1])
     {
-        printf("잔돈 %d원이 반환됩니다.\n",d);
+        printf("잔돈 %d원이 반환됩니다.\n", abs(d));
+        printf("%s가 나옵니다", names[pick - 1]);   
     }
+    else if (pay == prices[pick - 1])
+    {
+        printf("%s가 나옵니다", names[pick - 1]);
+    }
+    else
+    {
+        for (pay; pay < prices[pick - 1]; pay = pay + pay1)
+        {
+            if (d < 0)
+            {
+                printf("%d원이 부족합니다.\n", abs(d));
+                printf("금액을 추가해 주십시오:\n");
+                scanf("%d", &pay1);
+                d = pay + pay1 - prices[pick - 1];
+            }
+
+            printf("잔돈 %d원이 반환됩니다.\n", abs(d));
+            printf("%s가 나옵니다", names[pick - 1]);
+        }
+    }
+
 }
 
 int num()
