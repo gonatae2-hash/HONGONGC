@@ -1,8 +1,31 @@
-# 모든 파일 무시
-*
+# ===== VS Code =====
+.vscode/
 
-# c파일만 허용
-!*.c
+# ===== Build files =====
+*.o
+*.obj
+*.exe
+*.out
+*.a
+*.so
+*.dll
+*.ilk
+*.pdb
+*.vs/*
+*.slnx*
+*.vcxproj*
+*first/*
+*자판기.cp*
+# ===== CMake =====
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
 
-# .gitignore
-!.gitignore
+# ===== Debug / temp =====
+*.log
+*.tmp
+
+# ===== OS files =====
+.DS_Store
+Thumbs.db
