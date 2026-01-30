@@ -23,19 +23,14 @@ int num();
 
 int main(void)
 {
-    int choice;
-
-
-    int c = 0;
-    int pay = 0;
 
 
     char* names[] = { "콜라", "사이다", "빼빼로", "포카리", "쌍쌍바" };
     int prices[] = { 2500, 1500, 2000, 1300, 1000 };
 
     printf("================자판기================\n");
-    int i = 0;
-    int a = 1;
+    int i = 0;  // 카운트
+    int a = 1;  // 상품 번호
     for (i = 0; i < 5; i++)									// 메뉴 (종류, 금액) 출력
     {
         printf("%d. %s (%d원)\n", a, names[i], prices[i]);
@@ -55,11 +50,11 @@ int main(void)
 
     printf("금액을 넣어주십시오 :\n");
 
+    int pay = 0;        // 처음 지불한 돈
     scanf("%d", &pay);
 
-
-    int d = 0;
-    int pay1 = 0;
+    int d = 0;      // 잔돈
+    int pay1 = 0;   // 비용 부족시 추가 비용
     //4500 = 1500 6000
     d = pay - prices[pick - 1];                             // 거스름 돈 계산
     // 금액 부족할 때 누적 계산
@@ -83,7 +78,6 @@ int main(void)
                 scanf("%d", &pay1);
                 d = pay + pay1 - prices[pick - 1];
             }
-
             printf("잔돈 %d원이 반환됩니다.\n", abs(d));
             printf("%s가 나옵니다", names[pick - 1]);
         }
@@ -93,7 +87,7 @@ int main(void)
 
 int num()
 {
-    int i;
+    int i;      // 상품 1~5번 중 선택한 번호
     printf("메뉴를 선택하세요 :");
     scanf("%d", &i);
 
