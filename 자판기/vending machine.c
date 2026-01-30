@@ -70,16 +70,24 @@ int main(void)
     else
     {
         for (pay; pay < prices[pick - 1]; pay = pay + pay1)
-        {
+        {                                     //1000
             if (d < 0)
             {
                 printf("%d원이 부족합니다.\n", abs(d));
                 printf("금액을 추가해 주십시오:\n");
                 scanf("%d", &pay1);
                 d = pay + pay1 - prices[pick - 1];
+
+                if (d == 0)
+                {
+                    printf("%s가 나옵니다", names[pick - 1]);
+                }
+                else if (d > 0)
+                {
+                    printf("잔돈 %d원이 반환됩니다.\n", abs(d));
+                    printf("%s가 나옵니다", names[pick - 1]);
+                }
             }
-            printf("잔돈 %d원이 반환됩니다.\n", abs(d));
-            printf("%s가 나옵니다", names[pick - 1]);
         }
     }
 
